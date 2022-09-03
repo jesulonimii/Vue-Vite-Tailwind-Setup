@@ -1,9 +1,9 @@
 <template>
 
-  <div id="bar" style="width: 300px" class="h-screen bg-slate-800 p-8 justify-between transition-[width] duration-1000 overflow-hidden">
+  <div id="bar" style="width: 250px" class="h-screen bg-slate-800 p-8 justify-between transition-[width] duration-1000 overflow-hidden">
 
     <div class="h-fit w-fit flex">
-      <i id="toggle" class="w-full h-full uil uil-angle-double-left origin-center transition duration-1000 cursor-pointer mx-2 text-3xl w-full" @click="sideBar"></i>
+      <i id="toggle" class="w-full h-full uil uil-angle-double-left origin-center transition duration-1000 cursor-pointer mx-2 text-3xl w-full" @click="sideBar($event)"></i>
     </div>
 
     <div class="h-[80%] flex flex-col">
@@ -26,31 +26,45 @@
 
 <script setup>
 import SideBarItem from './SideBarItem.vue'
+const emit = defineEmits(['collapsed'])
 
-function sideBar() {
+function sideBar(event) {
   const bar = document.querySelector('#bar')
   const label = document.querySelectorAll('#label')
   const toggle = document.querySelector('#toggle')
+  let state = false
 
-  if (bar.getAttribute('style') === 'width: 300px;') {
+  if (bar.getAttribute('style') === 'width: 250px;') {
 
     bar.setAttribute("style", "width: 100px;")
     toggle.setAttribute("style", "transform: rotate(180deg)")
+
+    emit('collapsed', true)
+
+
 
     label.forEach(x=> {
       x.setAttribute("style", "opacity: 0;")
     })
 
+
   }
   else {
-    bar.setAttribute("style", "width: 300px;")
+    bar.setAttribute("style", "width: 250px;")
     toggle.setAttribute("style", "transform: rotate(0deg)")
+
+    emit('collapsed', false)
+
 
 
     label.forEach(x=> {
       x.setAttribute("style", "opacity: 1;")
     })
+
   }
+
+
+
 }
 
 </script>
