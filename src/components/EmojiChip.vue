@@ -1,6 +1,6 @@
 <template>
 
-  <router-link :to="link" class="mx-1 min-w-[90px] rounded-2xl flex bg-slate-900 px-2 py-1 items-center">
+  <router-link :to="link" class="mx-1 min-w-[90px] rounded-full flex bg-slate-900 px-2 py-2 items-center">
     <div class="mr-1">{{ emoji }}</div>
     <p class="mr-3">{{ text }}</p>
   </router-link>
