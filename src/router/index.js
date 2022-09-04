@@ -6,7 +6,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'My cinema',
+      name: 'CineFlix',
       component: HomeView
     },
     {
